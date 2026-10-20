@@ -58,14 +58,14 @@ flowchart TD
     M --> A
     M --> R1
   end
-  R1 -. wireless payload .-> R2["nRF24L01 receiver"]
+  R1 -.-> R2["nRF24L01 receiver"]
   subgraph V["Vehicle-side demonstrator"]
     R2 --> RX["Arduino Uno: parse status"]
     KEY["Push button / simulated key"] --> RX
     RX --> C{"All required checks valid?"}
-    C -- Yes --> D["L298N driver"]
+    C -->|Yes| D["L298N driver"]
     D --> MOTOR["12 V DC motor"]
-    C -- No --> STOP["Motor remains off"]
+    C -->|No| STOP["Motor remains off"]
     RX --> SERIAL["Serial status output"]
   end
 ```
