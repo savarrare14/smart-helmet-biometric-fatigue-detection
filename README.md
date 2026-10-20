@@ -91,7 +91,7 @@ An Arduino Serial Plotter trace shows small variations in raw readings, and one 
 
 - [System architecture](docs/system-architecture.md) — transmitter/receiver flow and decision logic.
 - [Hardware and sensors](docs/hardware-and-sensors.md) — component roles and analog front-end notes.
-- [Prototype validation](docs/prototype-validation.md) — scenarios reported in the draft, caveats, and tests still needed.
+- [Prototype validation](docs/prototype-validation.md) — example test scenarios, observations, caveats, and tests still needed.
 - [Implementation roadmap](docs/implementation-roadmap.md) — source files and measurements to add next.
 
 ## Safety, validation, and IP notes
