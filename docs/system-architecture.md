@@ -1,6 +1,6 @@
 # System Architecture
 
-This document summarizes the prototype flow described in the invention-disclosure draft, with the project's clarification that the AD620 instrumentation amplifier was used in the EEG-oriented signal chain. It is not an as-built wiring diagram.
+This document describes the smart-helmet prototype's system flow, including the AD620 instrumentation amplifier in the EEG-oriented signal chain. It is not an as-built wiring diagram.
 
 ## 1. Helmet-side transmitter
 
@@ -14,17 +14,17 @@ The transmitter is described around an Arduino Uno. Its inputs include:
 
 The ECG-oriented sensor module provides the front-end signal path; the AD620 supplies amplification for the low-level biopotential input before the signal is read and used by the fatigue-related processing. The signal type depends on the physiological source/electrode placement, not on the amplifier. The exact interconnection and signal-conditioning values should be taken from the actual prototype schematic.
 
-Sensor values / states are combined into a status payload. The draft names helmet status, alcohol state/level, crash flag, and fatigue-related information as transmitted fields. The exact binary layout, field widths, packet identifiers, and update interval are not specified in the currently documented material.
+Sensor values and states are combined into a status payload intended to carry helmet status, alcohol state/level, crash indication, and fatigue-related information. The exact binary layout, field widths, packet identifiers, and update interval still need to be documented from the firmware.
 
 ## 2. Wireless connection
 
-The draft describes a pair of nRF24L01 radio modules operating in the 2.4 GHz band. The helmet-side module sends status data to a vehicle-side receiver. The draft does not report a measured wireless range, packet-loss rate, interference test, or end-to-end latency result.
+A pair of nRF24L01 radio modules operating in the 2.4 GHz band provides the intended helmet-to-vehicle status link. The current repository does not include measured wireless range, packet-loss rate, interference-test, or end-to-end-latency results.
 
 ## 3. Vehicle-side receiver
 
 A second Arduino Uno receives the wireless payload and evaluates the incoming safety states. A push button is described as a simulated ignition-key input. The receiver drives an L298N motor-driver module and a 12 V DC motor as a bench-top representation of vehicle ignition.
 
-The behavior described in the draft is:
+The intended receiver behavior is:
 
 - If required safety checks are satisfied, simulated ignition may be enabled.
 - If alcohol is detected, helmet wear is not confirmed, a critical crash/fatigue condition is reported, or required input data is missing/weak, the motor should remain off.
@@ -34,7 +34,7 @@ The exact priority between conditions, communication timeout handling, and recei
 
 ## 4. Location and alerts
 
-The NEO-6M GPS module is described as acquiring coordinates when a crash or high-risk fatigue state is detected, with coordinates included in an event payload. The document also discusses alert paths. It does not provide validated GPS acquisition time, location accuracy, cellular/SMS delivery results, or cloud integration measurements.
+The NEO-6M GPS module is intended to acquire coordinates when a crash or high-risk fatigue state is detected, with coordinates included in an event payload. The current documentation does not include measured GPS acquisition time, location accuracy, cellular/SMS delivery results, or cloud-integration measurements.
 
 ## 5. High-level data flow
 
@@ -72,7 +72,7 @@ flowchart TD
 
 ## 6. Implementation evidence still required
 
-Add these details from the actual firmware and test setup before treating this as a reproducible system:
+Document these details from the actual firmware and test setup before treating this as a reproducible system:
 
 - Exact board models and sensor module variants.
 - GPIO / analog / serial pin map and wiring diagram.
