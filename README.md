@@ -34,17 +34,17 @@ flowchart TD
     RADIO1["nRF24L01 transmitter"]
     TX --> RADIO1
   end
-  RADIO1 -. 2.4 GHz wireless status payload .-> RADIO2["nRF24L01 receiver"]
+  RADIO1 -.-> RADIO2["nRF24L01 receiver"]
   subgraph Vehicle["Vehicle-side receiver / bench demo"]
     RADIO2 --> RX["Arduino Uno receiver"]
     BUTTON["Push-button / key input"] --> RX
     RX --> LOGIC{"Safety conditions all satisfied?"}
-    LOGIC -- Yes --> DRIVER["L298N motor driver"]
+    LOGIC -->|Yes| DRIVER["L298N motor driver"]
     DRIVER --> MOTOR["12 V DC motor: simulated ignition"]
-    LOGIC -- No --> OFF["Motor remains OFF"]
+    LOGIC -->|No| OFF["Motor remains OFF"]
     RX --> STATUS["Serial status output"]
   end
-  TX -. critical-event coordinates .-> GPS
+  TX -.-> GPS
 ```
 
 This diagram summarizes the intended signal path; it is not an as-built wiring diagram. Confirm actual pin assignments, signal conditioning, radio payload fields, and control flow from the firmware before attempting to reproduce the prototype.
