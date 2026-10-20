@@ -1,14 +1,14 @@
 # Hardware and Sensor Notes
 
-This page consolidates the component list in the invention-disclosure draft and the project's clarification that the AD620 instrumentation amplifier was used to amplify the signal in the EEG-oriented acquisition chain. The draft has a few differences in sensor naming, so the final bill of materials should be checked against the actual prototype.
+This page summarizes the smart-helmet prototype's hardware and the use of the AD620 instrumentation amplifier in the EEG-oriented acquisition chain. Some project notes use different sensor model names, so confirm the final bill of materials against the actual prototype.
 
 | Item | Model / quantity | Described role | Verification note |
 |---|---|---|---|
 | Controller | Arduino Uno × 2 | One transmitter and one receiver | Confirm exact boards and software versions |
-| Alcohol sensor | MQ-3; MQ-135 is also mentioned in one section | Alcohol-related input / unsafe-state flag | The draft's component table specifies MQ-3 |
-| Vibration sensor | SW-420; MH-series vibration sensor mentioned elsewhere | Abrupt vibration / crash-like events | Confirm the fitted module and trigger/calibration method |
+| Alcohol sensor | MQ-3; MQ-135 also appears in project notes | Alcohol-related input / unsafe-state flag | MQ-3 is the primary listed component |
+| Vibration sensor | SW-420; MH-series vibration sensor also appears in project notes | Abrupt vibration / crash-like events | Confirm the fitted module and trigger/calibration method |
 | Helmet-wear sensor | IR sensor module | Detect whether helmet is worn | Document mounting position and false-positive handling |
-| ECG-oriented sensor module/front-end | AD8232 is listed in the draft | Front-end reused for EEG-oriented acquisition through scalp-electrode placement | Document the actual connections and which module's output feeds the AD620 |
+| ECG-oriented sensor module/front-end | AD8232 is listed as the ECG-oriented front-end | Front-end reused for EEG-oriented acquisition through scalp-electrode placement | Document the actual connections and which module's output feeds the AD620 |
 | Instrumentation amplifier | AD620AN | Amplification of the low-level biopotential signal for the EEG/fatigue input chain | Add the actual gain-setting resistor, supply, filtering and output range from the circuit |
 | Radio link | nRF24L01 × 2 | Helmet-to-vehicle status transfer | Add configuration and packet format from firmware |
 | GPS | NEO-6M | Location capture during critical events | Capture test fix time and location behavior |
@@ -25,7 +25,7 @@ Technically, the AD620 does not convert ECG into EEG. The signal being measured 
 
 For reproducibility, document the actual circuit topology, electrode placement, AD620 gain-setting resistor, supply rails, bias/reference, filtering, ADC input range, sample rate, and signal-quality checks from the build. Do not infer those values from the amplifier model alone.
 
-The prototype readings in the disclosure draft do not establish a clinically validated EEG measurement or fatigue classification.
+The available prototype readings do not establish a clinically validated EEG measurement or fatigue classification.
 
 ## Electrical and safety notes
 
