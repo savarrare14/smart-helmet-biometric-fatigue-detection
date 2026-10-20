@@ -1,6 +1,6 @@
 # Implementation Roadmap
 
-The repository is currently a documentation scaffold aligned with the invention-disclosure draft and the clarification that an AD620AN instrumentation amplifier was used to amplify the signal in the EEG-oriented acquisition chain. The original Arduino sketches and complete wiring/configuration files have not yet been added.
+The repository currently provides the technical overview for the smart-helmet prototype, including the AD620AN instrumentation amplifier in the EEG-oriented acquisition chain. The original Arduino sketches and complete wiring/configuration files have not yet been added.
 
 ## 1. Reproducible source package
 
@@ -13,7 +13,7 @@ The repository is currently a documentation scaffold aligned with the invention-
 ## 2. Hardware documentation
 
 - [ ] Add an approved, as-built wiring diagram.
-- [ ] Confirm actual alcohol and vibration sensor modules (the draft mentions MQ-3/MQ-135 and SW-420/MH-series in different sections).
+- [ ] Confirm the actual alcohol and vibration sensor modules (project notes refer to MQ-3/MQ-135 and SW-420/MH-series variants).
 - [ ] Document how the ECG-oriented sensor/front-end was configured for scalp EEG acquisition.
 - [ ] Record the actual signal path through the sensor module and AD620AN, including gain-setting resistor, supply rails, bias/reference, and filter network.
 - [ ] Document electrode placement, ADC sampling, and signal-quality checks, if cleared for publication.
@@ -40,4 +40,4 @@ The repository is currently a documentation scaffold aligned with the invention-
 
 ## 5. Intellectual property and publication
 
-The source draft is an invention-disclosure document marked ©VIT IPR&TTCELL. Before publishing detailed implementation files, claims, complete circuit diagrams, or additional images from that document, obtain clearance from the relevant institution / IP team. This repository currently gives a technical overview rather than reproducing the full disclosure form or its proposed protection claims.
+Before publishing proprietary implementation files, patent claims, complete circuit diagrams, or protected project material, obtain clearance from the relevant institution / IP team. This repository is intended to provide a technical overview of the project.
