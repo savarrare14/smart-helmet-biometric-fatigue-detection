@@ -2,7 +2,7 @@
 
 An Arduino-based smart-helmet **prototype** that combines rider/helmet status sensing, alcohol-sensor input, vibration-based crash indication, EEG-oriented biopotential acquisition, GPS location capture, and wireless communication with a vehicle-side safety-check unit.
 
-> **Status:** Prototype / proof of concept. This repository contains a public-facing technical summary aligned with the invention-disclosure draft and the project clarification that the AD620 instrumentation amplifier was used in the EEG signal chain. The original firmware source, exact wiring files, and calibrated test dataset have not yet been added. The system is not a certified road-safety product or a clinically validated fatigue detector.
+> **Status:** Prototype / proof of concept. This repository currently provides a technical overview of the prototype and documents the AD620 instrumentation amplifier in the EEG-oriented signal chain. The original firmware source, exact wiring files, and calibrated test dataset have not yet been added. The system is not a certified road-safety product or a clinically validated fatigue detector.
 
 ## Project overview
 
@@ -49,7 +49,7 @@ flowchart TD
 
 This diagram summarizes the intended signal path; it is not an as-built wiring diagram. Confirm actual pin assignments, signal conditioning, radio payload fields, and control flow from the firmware before attempting to reproduce the prototype.
 
-## Hardware described in the draft and project clarification
+## Hardware components and roles
 
 | Component | Role in the prototype |
 |---|---|
@@ -67,9 +67,9 @@ This diagram summarizes the intended signal path; it is not an as-built wiring d
 
 **Signal-chain note:** EEG refers to electrical activity acquired from scalp electrodes; ECG refers to cardiac electrical activity. The ECG-oriented front-end was repurposed in this prototype for EEG-oriented acquisition, and the AD620 was used for amplification. The exact gain, filter network, electrode placement, sampling settings, and final analog interconnection should be documented from the actual circuit before making performance claims.
 
-The draft also mentions different alcohol/vibration sensor variants in different sections. The table above reflects the main component list; verify MQ-3 versus MQ-135 and SW-420 versus MH-series references against the hardware that was actually used.
+Project notes contain differing alcohol- and vibration-sensor model references. Confirm whether the built prototype uses MQ-3 or MQ-135 and SW-420 or an MH-series module, then align the bill of materials with the actual hardware.
 
-## Operating sequence described in the draft
+## Operating sequence
 
 1. Read helmet-wear status through the IR sensor.
 2. Read the MQ-3 alcohol-sensor input and evaluate the configured status/threshold.
@@ -77,15 +77,15 @@ The draft also mentions different alcohol/vibration sensor variants in different
 4. Acquire the scalp biopotential signal through the repurposed ECG-oriented front-end and AD620 amplification chain; flag weak or missing signal conditions where supported.
 5. Package sensor/status information and transmit it using the nRF24L01 link.
 6. On the receiver, evaluate the incoming safety states. The demo motor is enabled only when the required checks pass; otherwise it remains off.
-7. On a critical event, the draft describes acquiring GPS coordinates and issuing local/wireless alerts.
+7. During a critical event, the system is intended to acquire GPS coordinates and issue local or wireless alerts.
 
-The exact threshold values, packet format, timeout behavior, and fail-safe behavior must be verified in the source code; they are not fully specified here.
+The exact threshold values, packet format, timeout behavior, and fail-safe behavior still need to be confirmed from the firmware.
 
 ## Prototype observations
 
-The draft includes serial-output scenarios for a normal condition, an alcohol-related unsafe condition, a combined critical condition, and a helmet-not-worn / weak-signal condition. In the examples, the receiver keeps the simulated motor off when unsafe or incomplete inputs are reported.
+Example serial-output scenarios cover a normal condition, an alcohol-related unsafe condition, a combined critical condition, and a helmet-not-worn / weak-signal condition. In these examples, the receiver keeps the simulated motor off when unsafe or incomplete inputs are reported.
 
-The draft also describes an Arduino Serial Plotter trace with small variations in raw readings and explicitly notes one setup where EEG input is absent or weak. These observations show proof-of-concept integration, not validated physiological fatigue detection or real-world crash classification. See [Prototype validation notes](docs/prototype-validation.md).
+An Arduino Serial Plotter trace shows small variations in raw readings, and one recorded setup has absent or weak EEG input. These observations demonstrate proof-of-concept integration, not validated physiological fatigue detection or real-world crash classification. See [Prototype validation notes](docs/prototype-validation.md).
 
 ## Repository contents
 
@@ -99,9 +99,9 @@ The draft also describes an Arduino Serial Plotter trace with small variations i
 - This is a student engineering prototype, not a certified motorcycle helmet, medical device, or production ignition interlock.
 - Do not rely on the prototype to determine whether a rider is sober, alert, or safe to drive.
 - Do not connect the demonstrator to a real vehicle's ignition system. The described motor is a bench-top simulation.
-- The draft does not establish clinical performance, calibrated alcohol concentration, sensitivity/specificity, crash-detection accuracy, wireless reliability, GPS response latency, or long-duration reliability.
-- The uploaded source is an invention-disclosure draft marked ©VIT IPR&TTCELL. This repository summarizes the technical project only; it does not reproduce the full disclosure, internal forms, or detailed proposed protection claims. Obtain institutional/IP-team clearance before publishing additional patent-specific material, detailed schematics, or source files.
+- This repository does not include evidence establishing clinical performance, calibrated alcohol concentration, sensitivity/specificity, crash-detection accuracy, wireless reliability, GPS response latency, or long-duration reliability.
+- This repository provides a technical project summary and does not include internal institutional forms or detailed patent claims. Confirm institutional/IP clearance before publishing proprietary material, detailed schematics, or source files.
 
 ## Current repository status
 
-The repository is being documented from the invention-disclosure draft and the clarified AD620 use. The original Arduino sketches, radio packet definitions, pin map, sensor calibration data, and reproducible test logs still need to be added and reviewed. No source implementation should be inferred from this documentation alone.
+The repository currently contains the project overview and supporting documentation. The original Arduino sketches, radio packet definitions, pin map, sensor calibration data, and reproducible test logs still need to be added and reviewed. No source implementation should be inferred from this documentation alone.
