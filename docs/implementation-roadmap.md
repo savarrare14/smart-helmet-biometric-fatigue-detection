@@ -1,6 +1,6 @@
 # Implementation Roadmap
 
-The repository is currently a documentation scaffold aligned with the invention-disclosure draft. The original Arduino sketches and complete wiring/configuration files have not yet been added.
+The repository is currently a documentation scaffold aligned with the invention-disclosure draft and the clarification that an AD620AN instrumentation amplifier was used to amplify the signal in the EEG-oriented acquisition chain. The original Arduino sketches and complete wiring/configuration files have not yet been added.
 
 ## 1. Reproducible source package
 
@@ -13,9 +13,10 @@ The repository is currently a documentation scaffold aligned with the invention-
 ## 2. Hardware documentation
 
 - [ ] Add an approved, as-built wiring diagram.
-- [ ] Record sensor module variants (especially MQ-3 vs MQ-135 and SW-420 vs MH-series references).
-- [ ] Clarify the AD8232 / AD620AN signal chain and whether the measured source is intended to be ECG, EEG, or another biopotential input.
-- [ ] Document electrode setup, signal conditioning, ADC sampling, and signal-quality checks, if cleared for publication.
+- [ ] Confirm actual alcohol and vibration sensor modules (the draft mentions MQ-3/MQ-135 and SW-420/MH-series in different sections).
+- [ ] Document how the ECG-oriented sensor/front-end was configured for scalp EEG acquisition.
+- [ ] Record the actual signal path through the sensor module and AD620AN, including gain-setting resistor, supply rails, bias/reference, and filter network.
+- [ ] Document electrode placement, ADC sampling, and signal-quality checks, if cleared for publication.
 - [ ] Record nRF24L01 power, channel, data-rate, payload, retry, and timeout settings.
 - [ ] Document GPS serial configuration and critical-event acquisition logic.
 
