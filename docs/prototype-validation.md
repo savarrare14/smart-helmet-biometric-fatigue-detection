@@ -1,10 +1,10 @@
 # Prototype Validation Notes
 
-This page summarizes examples reported in the invention-disclosure draft. It is not an independent re-test of the prototype.
+This page summarizes example scenarios and observations recorded during prototype development. It is not an independent re-test of the system.
 
-## Scenarios shown in the draft
+## Example prototype scenarios
 
-| Scenario | Example readings / states in draft | Receiver action described |
+| Scenario | Example readings / states | Receiver action described |
 |---|---|---|
 | Normal condition | EEG-related raw readings around 492–515; alcohol-sensor values around 300–311; alcohol NO, crash NO, helmet YES | Simulated motor ON when required conditions are satisfied |
 | Alcohol-related unsafe condition | Example alcohol-sensor values around 451–487, with alcohol YES and helmet YES; some EEG-related readings around 233–280 | Simulated motor remains OFF |
@@ -13,7 +13,7 @@ This page summarizes examples reported in the invention-disclosure draft. It is 
 
 **Units caution:** the table's values are copied as reported serial / example values in the draft. The document does not consistently establish a calibrated physical unit for these readings. Treat them as prototype raw values, not clinically meaningful EEG amplitudes or calibrated alcohol concentrations.
 
-## Other observations stated in the draft
+## Other prototype observations
 
 - The Arduino Serial Plotter figure shows a signal varying approximately from 257 to 267 raw values and is described as a low-frequency/resting-state variation.
 - One section explicitly states that EEG fatigue detection does not work when EEG data is missing; the receiver may show a weak-signal condition unless missing input is handled in code.
@@ -23,7 +23,7 @@ These observations demonstrate a prototype workflow and serial-status reporting,
 
 ## Validation still needed
 
-The draft does not provide a consolidated quantitative report for the following:
+The current project records do not provide a consolidated quantitative report for the following:
 
 - Sensitivity, specificity, false alarms, or missed events for fatigue detection.
 - Clinically validated EEG acquisition or fatigue labels.
