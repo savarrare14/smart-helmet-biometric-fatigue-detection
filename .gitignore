@@ -1,0 +1,29 @@
+# Arduino IDE / editor workspace
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts / generated files
+build/
+Debug/
+Release/
+*.o
+*.elf
+*.hex
+*.bin
+*.map
+*.d
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local secrets and private settings
+.env
+.env.*
+secrets.*
+private_config.*
+
+# Logs and temporary files
+*.tmp
