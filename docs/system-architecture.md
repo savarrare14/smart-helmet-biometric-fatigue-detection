@@ -1,6 +1,6 @@
 # System Architecture
 
-This document summarizes the prototype flow described in the invention-disclosure draft. It is not an as-built wiring diagram.
+This document summarizes the prototype flow described in the invention-disclosure draft, with the project's clarification that the AD620 instrumentation amplifier was used in the EEG-oriented signal chain. It is not an as-built wiring diagram.
 
 ## 1. Helmet-side transmitter
 
@@ -9,8 +9,10 @@ The transmitter is described around an Arduino Uno. Its inputs include:
 - IR sensor module for helmet-wear status.
 - MQ-3 alcohol sensor.
 - SW-420 vibration sensor for abrupt movement / crash-like indication.
-- A biopotential-signal chain described as an EEG-based fatigue input, with an AD8232 module and AD620AN amplification stage mentioned in the draft.
+- An ECG-oriented biopotential front-end repurposed for EEG-oriented acquisition through scalp electrode placement, with an AD620AN instrumentation amplifier used to amplify the signal.
 - NEO-6M GPS module for location acquisition during critical events.
+
+The ECG-oriented sensor module provides the front-end signal path; the AD620 supplies amplification for the low-level biopotential input before the signal is read and used by the fatigue-related processing. The signal type depends on the physiological source/electrode placement, not on the amplifier. The exact interconnection and signal-conditioning values should be taken from the actual prototype schematic.
 
 Sensor values / states are combined into a status payload. The draft names helmet status, alcohol state/level, crash flag, and fatigue-related information as transmitted fields. The exact binary layout, field widths, packet identifiers, and update interval are not specified in the currently documented material.
 
@@ -42,7 +44,8 @@ flowchart TD
     S1["IR: helmet worn?"]
     S2["MQ-3: alcohol sensor"]
     S3["SW-420: vibration / crash flag"]
-    S4["Biopotential input + analog amplification"]
+    BIO["ECG-oriented front-end repurposed for scalp EEG acquisition"]
+    AMP["AD620AN instrumentation amplifier"]
     S5["NEO-6M GPS"]
     M["Arduino Uno: read inputs and form status"]
     A["Local alert output"]
@@ -50,7 +53,7 @@ flowchart TD
     S1 --> M
     S2 --> M
     S3 --> M
-    S4 --> M
+    BIO --> AMP --> M
     S5 --> M
     M --> A
     M --> R1
@@ -73,7 +76,7 @@ Add these details from the actual firmware and test setup before treating this a
 
 - Exact board models and sensor module variants.
 - GPIO / analog / serial pin map and wiring diagram.
-- Signal-conditioning circuit and electrode placement details approved for release.
+- Signal-conditioning circuit, AD620 gain-setting resistor, supply/bias, filtering, and electrode placement details approved for release.
 - Radio channel, data rate, payload format, retry / timeout behavior.
 - Threshold definitions, filtering, and fail-safe behavior for missing sensors.
 - GPS update / fix policy and exact rules for including coordinates in an alert.
