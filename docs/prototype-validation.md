@@ -11,7 +11,7 @@ This page summarizes example scenarios and observations recorded during prototyp
 | Critical unsafe condition | Example alcohol-sensor values around 505–517, crash YES, low EEG-related readings around 213–260, helmet YES | Simulated motor remains OFF and emergency state is reported |
 | Helmet not worn / weak input | Helmet NO and an EEG weak-signal condition; some sensor values absent | Simulated motor remains OFF until required inputs are valid |
 
-**Units caution:** the table's values are copied as reported serial / example values in the draft. The document does not consistently establish a calibrated physical unit for these readings. Treat them as prototype raw values, not clinically meaningful EEG amplitudes or calibrated alcohol concentrations.
+**Units caution:** the table contains example serial-output values. A calibrated physical unit is not established for these readings. Treat them as prototype raw values, not clinically meaningful EEG amplitudes or calibrated alcohol concentrations.
 
 ## Other prototype observations
 
